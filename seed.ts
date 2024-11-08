@@ -12,12 +12,6 @@ config({ path: ".dev.vars" });
 const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql);
 
-/* const seedData: NewUser[] = [
-  { name: "Nikita Shamgunov", email: "nikita.shamgunov@example.com" },
-  { name: "Heikki Linnakangas", email: "heikki.linnakangas@example.com" },
-  { name: "Stas Kelvich", email: "stas.kelvich@example.com" },
-  { name: "Dmitri Williams", email: "d.w@exmample.com" },
-]; */
 
 async function seed() {
   await db.insert(users).values(seedData);
