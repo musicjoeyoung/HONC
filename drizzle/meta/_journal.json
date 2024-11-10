@@ -15,6 +15,13 @@
       "when": 1731015324999,
       "tag": "0001_mixed_molten_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731243266469,
+      "tag": "0002_jittery_carlie_cooper",
+      "breakpoints": true
     }
   ]
 }
