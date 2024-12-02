@@ -21,14 +21,37 @@ app.get("/welcome", (c) => {
   return c.text("Welcome to Honc! 🪿");
 })
 
-/* app.get("/api/users", async (c) => {
-  const sql = neon(c.env.DATABASE_URL);
-  const db = drizzle(sql);
+app.post("/api/chat", async (c) => {
+  const body = await c.req.json();
+  console.log("User message:", body?.message);
 
-  return c.json({
-    users: await db.select().from(users),
-  });
-}); */
+  const responses = [
+    "Honc! ",
+    "Honk! ",
+    "Hooonc! 🪿",
+    "Hoooonk! 🪿",
+    "Honk honk honk!",
+    "Honk honk honk honk honk honk honk honk!",
+    "Honk honk honk honk honk honk honk honk honk honk honk honk honk honk honk honk honk",
+    "Honk? 🪿",
+    "Honkity honk honk!",
+    "Honkkkkkkkkkkk!",
+    "Hoooonk-a-doodle-doo 🪿",
+    "Honkalicious! 🪿",
+    "Honkity honk honk honk! 🪿",
+    "Hoooonkity hoo! 🪿",
+    "HONK! 🪿 Did you hear me?",
+    "Hoooonk! Just honk it! 🪿",
+    "Hoooonk? Maybe! 🪿",
+    "You are speaking to a Goose Bot. What are you expecting me to say?",
+    "DO YOU HAVE ANY BREAD"
+  ];
+
+  const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+
+  return c.json({ message: randomResponse });
+});
+
 
 app.get("/api/geese-trivia", async (c) => {
   const sql = neon(c.env.DATABASE_URL);
