@@ -2,6 +2,8 @@ name = "spooking-honc"
 compatibility_date = "2024-10-28"
 compatibility_flags = [ "nodejs_compat" ]
 
+main = "src/index.ts"
+
 # [vars]
 # MY_VAR = "my-variable"
 
@@ -17,7 +19,7 @@ enabled = true
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
-# bucket_name = "my-bucket"
+# bucket_name = "goose-bucket"
 
 # [[d1_databases]]
 # binding = "DB"

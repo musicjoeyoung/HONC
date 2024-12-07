@@ -1,6 +1,8 @@
+import { geese, geeseQuestions } from "./src/db/schema";
+
 import { config } from "dotenv";
 import { drizzle } from "drizzle-orm/neon-http";
-import { geeseQuestions } from "./src/db/schema";
+import { geeseNames } from "./src/seeds/geese-names";
 import { geeseTrivia } from "./src/seeds/geese-questions"
 import { neon } from "@neondatabase/serverless";
 
@@ -13,8 +15,10 @@ const db = drizzle(sql);
 
 
 async function seed() {
-  //await db.delete(geeseQuestions);
+  await db.delete(geeseQuestions);
+  await db.delete(geese);
   await db.insert(geeseQuestions).values(geeseTrivia);
+  await db.insert(geese).values(geeseNames);
 }
 
 async function main() {
