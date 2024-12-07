@@ -4,8 +4,10 @@ compatibility_flags = [ "nodejs_compat" ]
 
 main = "src/index.ts"
 
-# [vars]
+[vars]
 # MY_VAR = "my-variable"
+DATABASE_URL = "postgresql://neondb_owner:wuaU2PeZBR4n@ep-icy-moon-a5i7r0jg-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
+
 
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
@@ -17,14 +19,14 @@ enabled = true
 # binding = "MY_KV_NAMESPACE"
 # id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# [[r2_buckets]]
-# binding = "MY_BUCKET"
-# bucket_name = "goose-bucket"
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "goose-bucket"
 
 # [[d1_databases]]
 # binding = "DB"
 # database_name = "my-database"
 # database_id = ""
 
-# [ai]
-# binding = "AI"
+[ai]
+binding = "AI"

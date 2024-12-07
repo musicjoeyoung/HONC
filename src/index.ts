@@ -97,7 +97,7 @@ app.post("/api/geese/:name", async (c) => {
 
     const model =
       "@cf/black-forest-labs/flux-1-schnell" as BaseAiTextToImageModels;
-    const prompt = `Please generate a image of a goose. Its name is ${name}. Make it in the style of comic or anime please`;
+    const prompt = `Please generate a image of a goose. Its name is ${name}. Make it in the style of comic or anime please and related to the name it is given. Include imagery that is related to ${name}.`;
 
     //check if AI is even configured
     if (!c.env.AI) {
