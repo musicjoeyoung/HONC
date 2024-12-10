@@ -97,7 +97,7 @@ app.post("/api/geese/:name", async (c) => {
 
     const model =
       "@cf/black-forest-labs/flux-1-schnell" as BaseAiTextToImageModels;
-    const prompt = `Please generate a image of a goose. Its name is ${name}. Make it in the style of comic or anime please and related to the name it is given. Include imagery that is related to ${name}.`;
+    const prompt = `Please generate a image of a goose. Its name is ${name}. Make it in the style of comic or anime please and related to the name it is given. Include imagery that is related to ${name}. If a title such as "Dr.", "Doctor", "Mr.", "Ms.", "Mrs.", "Mister", "Miss", "Misses", "Sir", "Ma'am", or "Madame" is included in their ${name}, give them fancy and regal clothing and some sort of top hat. If any part of ${name} is the name of some other type of animal, create a hybrid image of that animal and a goose. If any part of ${name} is a type of food, give the goose a chef's hat and a plate of that food. If any part of ${name} is a type of profession, give the goose a uniform or outfit related to that profession. If any part of ${name} is a type of vehicle, give the goose a vehicle. If any part of ${name} is an adjective, add imagery that represents that adjective. If any part of ${name} is a verb, add imagery that represents that verb. Combine all of these instructions into a single image.`;
 
     //check if AI is even configured
     if (!c.env.AI) {
@@ -186,6 +186,32 @@ app.get("/api/geese/:name", async (c) => {
 
   c.header("Content-Type", "image/png");
   return c.body(image.body);
+});
+
+
+app.delete("/api/geese/:name", async (c) => {
+  const { name } = c.req.param();
+
+  const sql = neon(c.env.DATABASE_URL);
+  const db = drizzle(sql);
+
+  const goose = await db.select().from(geese).where(eq(geese.name, name));
+
+  if (goose.length === 0) {
+    return c.json(
+      {
+        error: "doesnt_exist",
+      },
+      404,
+    );
+  }
+
+  await db.delete(geese).where(eq(geese.name, name));
+  await c.env.R2_BUCKET.delete(`${name}.png`);
+
+  return c.json({
+    status: "deleted",
+  });
 });
 
 
