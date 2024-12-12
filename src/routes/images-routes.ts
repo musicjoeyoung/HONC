@@ -43,8 +43,24 @@ images.post("/:name", async (c) => {
 
     try {
         const model = "@cf/black-forest-labs/flux-1-schnell" as BaseAiTextToImageModels;
-        const prompt = `Please generate a image of a goose. Its name is ${name}. Make it in the style of comic or anime please and related to the name it is given. Include imagery that is related to ${name}. If a title such as "Dr.", "Doctor", "Mr.", "Ms.", "Mrs.", "Mister", "Miss", "Misses", "Sir", "Ma'am", or "Madame" is included in their ${name}, give them fancy and regal clothing and some sort of top hat. IF ANY PART OF ${name} is the name of some other type of animal, create a hybrid image of that animal and a goose--this is VERY important. For example, if ${name} includes "dog", produce a goose that looks like a dog. If any part of ${name} is a type of food, give the goose a chef's hat and a plate of that food. If any part of ${name} is a type of profession, give the goose a uniform or outfit related to that profession. If any part of ${name} is a type of vehicle, give the goose a vehicle. If any part of ${name} is an adjective, add imagery that represents that adjective. If any part of ${name} is a verb, add imagery that represents that verb. Combine all of these instructions into a single image.`;
+        const prompt = `Generate a single image of a goose character named ${name} in an anime/comic style. CRITICAL ANATOMICAL REQUIREMENTS:
+1. MUST have EXACTLY ONE HEAD - NO exceptions, NO mutations, NO extra heads
+2. Basic goose anatomy required: ONE long neck, ONE head, ONE beak, TWO wings, TWO legs
 
+Character customization based on ${name}:
+- For animal hybrids: Blend the non-goose animal's features into the single goose (e.g., "Bear Goose" should have ONE head with bear fur texture and goose beak; "Dog" should have ONE head with dog ears and goose beak and maybe a dog tail)
+- Never create multiple heads or split features
+- Maintain goose silhouette while adding themed elements
+
+Style modifications based on ${name}:
+- Titles (Dr./Mr./Ms./etc.): Add formal wear and top hat
+- Food words: Add chef hat and plated food
+- Professions: Add job-specific uniform
+- Vehicles: Show goose with vehicle
+- Adjectives: Add visual representation (e.g., "sad" = forlorn expression; "happy" = big smile)
+- Verbs: Show goose in action (e.g., "running" = goose running; "flying" = goose flying)
+
+IMPORTANT: Create ONE unified character with ONE head, maintaining goose characteristics while incorporating thematic elements naturally.`;
         if (!c.env.AI) {
             console.error("AI binding is not configured.");
             return c.json({ error: "AI_not_configured" }, 500);
