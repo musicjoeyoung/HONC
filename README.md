@@ -23,6 +23,37 @@ Make sure you have Neon set up and configured with your database. Create a .dev.
 └── package.json
 ```
 
+### Backend Setup
+
+1.  Clone repository:
+
+```
+git clone  https://github.com/yourusername/spooking-honc.git
+
+cd spooking-honc
+```
+
+2.  Install dependencies:
+
+`npm install`
+
+3.  Create  `.dev.vars`  file:
+
+```
+DATABASE_URL=your_neon_postgresql_url
+
+FPX_ENDPOINT=http://localhost:8788/v1/traces
+
+AI=your_cloudflare_ai_key
+
+R2_BUCKET=your_r2_bucket_name
+```
+
+4.  Start backend server:
+
+`npm run dev`
+
+
 ### Commands
 
 Run the migrations and (optionally) seed the database:
@@ -65,4 +96,20 @@ Deploy with wrangler:
 
 ```sh
 npm run deploy
-```# honc-test
+```
+
+## Features
+
+-   🎨 AI Image Generation: Create custom goose characters
+-   🤖 GooseBot: Interactive chat interface
+-   📚 Goose Facts: Educational goose information
+-   🔄 3D Model: Interactive spinning goose
+
+## Tech Stack
+
+-   Frontend: React, TypeScript, Three.js, SCSS
+-   Backend: Hono, Cloudflare Workers
+-   Database: PostgreSQL (Neon)
+-   Storage: Cloudflare R2
+-   AI: Cloudflare Workers AI
+
