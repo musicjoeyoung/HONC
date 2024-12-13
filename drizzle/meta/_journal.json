@@ -5,43 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1731012982856,
-      "tag": "0000_elite_black_knight",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1731015324999,
-      "tag": "0001_mixed_molten_man",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1731243266469,
-      "tag": "0002_jittery_carlie_cooper",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1733170301255,
-      "tag": "0003_parched_ogun",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1733593299966,
-      "tag": "0004_ancient_lightspeed",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1733593843402,
-      "tag": "0005_huge_black_widow",
+      "when": 1734115025746,
+      "tag": "0000_secret_mimic",
       "breakpoints": true
     }
   ]

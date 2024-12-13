@@ -1,1 +1,0 @@
-ALTER TABLE "geese" ADD COLUMN "image_url" text NOT NULL;

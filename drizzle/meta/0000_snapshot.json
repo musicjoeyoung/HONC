@@ -1,11 +1,11 @@
 {
-  "id": "9d589fc6-626c-47aa-ae9d-a46a4118d5b1",
+  "id": "d419d11b-0b77-47d4-ae1c-c81762b6f0de",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.users": {
-      "name": "users",
+    "public.geese": {
+      "name": "geese",
       "schema": "",
       "columns": {
         "id": {
@@ -18,17 +18,50 @@
           "name": "name",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "email": {
-          "name": "email",
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.geese-questions": {
+      "name": "geese-questions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "question": {
+          "name": "question",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "settings": {
-          "name": "settings",
-          "type": "jsonb",
+        "answer": {
+          "name": "answer",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -51,12 +84,16 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
-      "checkConstraints": {}
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {},
   "schemas": {},
   "sequences": {},
+  "roles": {},
+  "policies": {},
   "views": {},
   "_meta": {
     "columns": {},
